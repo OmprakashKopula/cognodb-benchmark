@@ -1,6 +1,6 @@
 # Graph Database Performance Benchmark: CognoDB Cloud vs. Modern Graph Engines
 
-**Author:** Omprakash Kopula Kumar  
+**Author:** Omprakash K K  
 **Dataset:** Social Network Graph (119,957 Edges, 20,000 Nodes)  
 **Evaluated Platforms:** CognoDB Cloud, Memgraph Cloud, FalkorDB Cloud, Neo4j AuraDB Free, NetworkX (In-Memory Baseline)
 
@@ -92,13 +92,21 @@ The generated comparison charts are located in the `figures/` directory:
 pip install -r requirements.txt
 
 # 2. Configure environment credentials in .env
-# COGNODB_URI, MEMGRAPH_URI, FALKORDB_HOST, NEO4J_URI
+# Set COGNODB_URI, MEMGRAPH_URI, FALKORDB_HOST, FALKORDB_PORT, FALKORDB_PASSWORD, NEO4J_URI, etc.
 
-# 3. Execute platform benchmarks
-python benchmark_cognodb.py
-python benchmark_generic_bolt.py
-python benchmark_falkordb.py
-python benchmark_networkx.py
+# 3. Prepare dataset
+python prepare_data.py
 
-# 4. Generate visual comparison charts
+# 4. Ingest and Benchmark CognoDB Cloud
+python load_data.py
+python benchmark_workloads.py
+python benchmark_concurrency.py
+
+# 5. Benchmark Alternative Platforms
+python benchmark_generic_bolt.py          # Memgraph & Neo4j Aura
+python benchmark_generic_concurrency.py   # Concurrency sweeps
+python benchmark_falkordb.py              # FalkorDB Cloud
+python benchmark_networkx.py              # In-Memory Baseline
+
+# 6. Generate visual comparison charts
 python generate_report_visuals.py
