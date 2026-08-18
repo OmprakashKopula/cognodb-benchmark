@@ -1,0 +1,23 @@
+{
+  "1_workers": {
+    "workers": 1,
+    "qps": 7.47,
+    "p50_ms": 103.19,
+    "p95_ms": 167.64,
+    "total_ops": 200
+  },
+  "10_workers": {
+    "workers": 10,
+    "qps": 88.67,
+    "p50_ms": 101.9,
+    "p95_ms": 152.34,
+    "total_ops": 200
+  },
+  "40_workers": {
+    "workers": 40,
+    "qps": 259.31,
+    "p50_ms": 98.58,
+    "p95_ms": 373.05,
+    "total_ops": 200
+  }
+}
